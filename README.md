@@ -1,20 +1,15 @@
 # HelpGranny
 
-An AI-powered voice assistant for elderly users that controls an Android phone on their behalf. The user speaks, and the phone acts.
-
-Built for the Anthropic hackathon.
-
----
+A mobile-use agent for voice-controlled assistant for elderly users that controls an Android phone on their behalf. The user speaks, and the phone acts.
 
 <p align="center">
   <img src="docs/screenshot.jpg" width="300" alt="HelpGranny app screenshot"/>
 </p>
 
----
 
 ## The problem
 
-Elderly users struggle with smartphones. Menus are confusing, apps change, and asking for help every time is humiliating. HelpGranny lets them just say what they want and the phone does it.
+Elderly people lose billions to scams yearly, panic during emergencies, and struggle with basic apps. Bigger fonts aren't the answer. HelpGranny doesn't teach grandma to use the phone; it uses the phone for her. She just talks. The AI taps, scrolls, types, and navigates like a grandkid sitting next to her.
 
 ## What it does
 
