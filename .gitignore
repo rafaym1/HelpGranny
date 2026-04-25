@@ -3,3 +3,4 @@ grandparent-ai-managed/
 *.iml
 .idea/
 .claude/
+grandparent_ai_mobile_spec*
