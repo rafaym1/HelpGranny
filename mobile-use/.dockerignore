@@ -1,0 +1,38 @@
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.env
+
+# Poetry
+poetry.lock
+.poetry
+
+# uv
+.uv-cache
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Project
+.venv/
+.github/
+.ruff_cache/
+assets/
+*.Dockerfile
+*.dockerignore
+mobile-use.ps1
+mobile-use.sh
+llm-config.override.jsonc
+docker-compose.yml

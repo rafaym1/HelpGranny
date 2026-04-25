@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">Grandparent AI</string>
+    <string name="app_subtitle">Your AI Helper</string>
+    <string name="accessibility_service_label">Grandparent AI Agent</string>
+    <string name="accessibility_service_summary">Lets the assistant see and tap the screen for you.</string>
+    <string name="accessibility_service_description">Grandparent AI uses Accessibility to read what is on your screen and perform taps, scrolls, and typing on your behalf — so you can just say what you want done.</string>
+
+    <string name="btn_talk">TAP TO\nTALK</string>
+    <string name="tap_hint">Tap the button to speak</string>
+    <string name="status_idle">Ready to help</string>
+    <string name="status_listening">Listening…</string>
+    <string name="status_thinking">Thinking…</string>
+    <string name="status_acting">Working on it…</string>
+
+    <string name="wake_hint">Say \"Helper\" to activate hands-free</string>
+    <string name="chip_shield">🛡 Scam Shield</string>
+    <string name="chip_emergency">🆘 Emergency</string>
+    <string name="chip_whatsapp">💬 WhatsApp</string>
+    <string name="log_header">Activity</string>
+
+    <string name="enable_accessibility_title">Enable Accessibility</string>
+    <string name="enable_accessibility_message">Grandparent AI needs the Accessibility permission so it can see your screen and tap for you. Please enable \"Grandparent AI Agent\" in Accessibility settings.</string>
+    <string name="open_settings">Open settings</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="missing_api_key">Missing ANTHROPIC_API_KEY. Add it to local.properties and rebuild.</string>
+
+    <string name="notif_channel_name">Grandparent AI</string>
+    <string name="notif_channel_desc">Shown while the assistant is working on a task.</string>
+    <string name="notif_running">Grandparent AI is working…</string>
+
+    <string name="wake_channel_name">Wake-word listener</string>
+    <string name="wake_channel_desc">Shown while Grandparent AI is listening for "Helper".</string>
+    <string name="wake_notif_title">Listening for "Helper"</string>
+    <string name="wake_notif_text">Say "Helper" followed by what you need.</string>
+
+    <string name="wake_toggle_label">Always listen for \"Helper\"</string>
+    <string name="permission_phone_sms_rationale">To watch incoming calls and texts for scams, Grandparent AI needs phone-state and SMS permissions. You can deny these and still use the tap-to-talk button.</string>
+
+    <string name="verdict_scam">⚠ SCAM DETECTED</string>
+    <string name="verdict_safe">✓ NOT A SCAM</string>
+    <string name="verdict_unsure">? NOT SURE</string>
+</resources>

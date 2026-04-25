@@ -1,0 +1,149 @@
+// Here is the default config that will be used if no override is provided.
+{
+  "default": {
+    "planner": {
+      "provider": "openai",
+      "model": "gpt-5-nano",
+      "fallback": {
+        "provider": "openai",
+        "model": "gpt-5-mini"
+      }
+    },
+    "orchestrator": {
+      "provider": "openai",
+      "model": "gpt-5-nano",
+      "fallback": {
+        "provider": "openai",
+        "model": "gpt-5-mini"
+      }
+    },
+    "cortex": {
+      "provider": "openai",
+      "model": "gpt-5",
+      "fallback": {
+        "provider": "openai",
+        "model": "o4-mini"
+      }
+    },
+    "executor": {
+      "provider": "openai",
+      "model": "gpt-5-nano",
+      "fallback": {
+        "provider": "openai",
+        "model": "gpt-5-mini"
+      }
+    },
+    "contextor": {
+      "provider": "openai",
+      "model": "gpt-5-nano",
+      "fallback": {
+        "provider": "openai",
+        "model": "gpt-5-mini"
+      }
+    },
+    "utils": {
+      "hopper": {
+        // Needs at least a 256k context window.
+        "provider": "openai",
+        "model": "gpt-5-nano",
+        "fallback": {
+          "provider": "openai",
+          "model": "gpt-5-mini"
+        }
+      },
+      "outputter": {
+        "provider": "openai",
+        "model": "gpt-5-nano",
+        "fallback": {
+          "provider": "openai",
+          "model": "gpt-5-mini"
+        }
+      }
+      // video_analyzer is optional - only needed when using video recording tools
+      // Requires a video-capable model (Google). To enable, uncomment below:
+      // "video_analyzer": {
+      //   "provider": "google",
+      //   "model": "gemini-3-flash-preview",
+      //   "fallback": {
+      //     "provider": "google",
+      //     "model": "gemini-2.5-flash"
+      //   }
+      // }
+    }
+  },
+  // This is the config we recommend.
+  // To use it, copy it to llm-config.override.jsonc, following llm-config.override.template.jsonc.
+  "recommended": {
+    "planner": {
+      "provider": "minitap",
+      "model": "meta-llama/llama-4-scout",
+      "fallback": {
+        "provider": "minitap",
+        "model": "meta-llama/llama-4-maverick"
+      }
+    },
+    "orchestrator": {
+      "provider": "minitap",
+      "model": "openai/gpt-oss-120b",
+      "fallback": {
+        "provider": "minitap",
+        "model": "meta-llama/llama-4-maverick"
+      }
+    },
+    "cortex": {
+      "provider": "minitap",
+      "model": "google/gemini-3-pro-preview",
+      "fallback": {
+        "provider": "minitap",
+        "model": "google/gemini-2.5-pro"
+      }
+    },
+    "executor": {
+      "provider": "minitap",
+      "model": "meta-llama/llama-3.1-70b-instruct",
+      "fallback": {
+        "provider": "minitap",
+        "model": "openai/gpt-5-mini"
+      }
+    },
+    "contextor": {
+      "provider": "minitap",
+      "model": "meta-llama/llama-3.1-8b-instruct",
+      "fallback": {
+        "provider": "minitap",
+        "model": "meta-llama/llama-3.3-70b-instruct"
+      }
+    },
+    "utils": {
+      "hopper": {
+        // Needs at least a 256k context window.
+        "provider": "minitap",
+        "model": "openai/gpt-5-nano",
+        "fallback": {
+          "provider": "minitap",
+          "model": "openai/gpt-5-mini"
+        }
+      },
+      "outputter": {
+        "provider": "minitap",
+        "model": "openai/gpt-5-nano",
+        "fallback": {
+          "provider": "minitap",
+          "model": "openai/gpt-5-mini"
+        }
+      },
+      // video_analyzer is optional - only needed when using video recording tools
+      // Requires a video-capable model. Ex of supported models:
+      // gemini-3-pro-preview, gemini-3-flash-preview, gemini-2.5-flash,
+      // gemini-2.5-flash-lite, gemini-2.5-pro, gemini-2.0-flash, gemini-2.0-flash-lite
+      "video_analyzer": {
+        "provider": "minitap",
+        "model": "google/gemini-3-flash-preview",
+        "fallback": {
+          "provider": "minitap",
+          "model": "google/gemini-2.5-flash"
+        }
+      }
+    }
+  }
+}

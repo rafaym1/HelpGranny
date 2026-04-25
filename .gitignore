@@ -1,0 +1,5 @@
+grandparent-ai-managed/
+*.mp4
+*.iml
+.idea/
+.claude/

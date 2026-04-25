@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "charliermarsh.ruff",
+    "ms-pyright.pyright",
+    "ms-python.debugpy",
+    "ms-python.python",
+    "samuelcolvin.jinjahtml",
+    "usernamehw.errorlens"
+  ]
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="screen_padding">20dp</dimen>
+    <dimen name="card_radius">16dp</dimen>
+    <dimen name="card_elevation">3dp</dimen>
+    <dimen name="talk_btn_size">200dp</dimen>
+    <dimen name="pulse_ring_size">252dp</dimen>
+</resources>

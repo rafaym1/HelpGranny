@@ -1,0 +1,54 @@
+services:
+  mobile-use-full-ip:
+    image: minitap/mobile-use:latest
+    container_name: mobile-use-full
+    user: "mobile-use:mobile-use"
+    restart: no
+    env_file:
+      - .env
+    environment:
+      ADB_CONNECT_ADDR: "${ADB_CONNECT_ADDR}"
+      RESULTS_OUTPUT_PATH: "/home/mobile-use/results.txt"
+      EVENTS_OUTPUT_PATH: "/home/mobile-use/events.json"
+    volumes:
+      - mobile-use-adb-keys:/home/mobile-use/.android
+      - ./llm-config.override.jsonc:/app/llm-config.override.jsonc
+
+  mobile-use-full-usb:
+    image: minitap/mobile-use:latest
+    container_name: mobile-use-full-usb
+    user: "mobile-use:mobile-use"
+    restart: no
+    env_file:
+      - .env
+    privileged: true
+    devices:
+      - "/dev/bus/usb:/dev/bus/usb"
+    environment:
+      RESULTS_OUTPUT_PATH: "/home/mobile-use/results.txt"
+      EVENTS_OUTPUT_PATH: "/home/mobile-use/events.json"
+    volumes:
+      - mobile-use-adb-keys:/home/mobile-use/.android
+      - ./llm-config.override.jsonc:/app/llm-config.override.jsonc
+
+  mobile-use-ip:
+    container_name: mobile-use
+    user: "mobile-use:mobile-use"
+    restart: no
+    build:
+      context: .
+      dockerfile: slim.Dockerfile
+    env_file:
+      - .env
+    environment:
+      ADB_CONNECT_ADDR: "${ADB_CONNECT_ADDR}"
+      RESULTS_OUTPUT_PATH: "/home/mobile-use/results.txt"
+      EVENTS_OUTPUT_PATH: "/home/mobile-use/events.json"
+      MOBILE_USE_HEALTH_RETRIES: "150"
+      MOBILE_USE_HEALTH_DELAY: "2"
+    volumes:
+      - mobile-use-adb-keys:/home/mobile-use/.android
+      - ./llm-config.override.jsonc:/app/llm-config.override.jsonc
+
+volumes:
+  mobile-use-adb-keys:

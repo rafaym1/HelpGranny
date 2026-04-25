@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg"
+    android:fitsSystemWindows="true">
+
+    <!-- Blue header strip -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/brand_blue"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/text_on_brand"
+            android:textSize="28sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_subtitle"
+            android:textColor="#B3FFFFFF"
+            android:textSize="15sp"
+            android:layout_marginTop="3dp"/>
+    </LinearLayout>
+
+    <!-- Scam Shield verdict banner; hidden by default, shown after a Scam Shield run -->
+    <TextView
+        android:id="@+id/tvVerdict"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="18dp"
+        android:text="@string/verdict_safe"
+        android:textColor="@color/verdict_text"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:visibility="gone"
+        android:background="@color/verdict_safe_bg"/>
+
+    <!-- Scrollable body -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp">
+
+            <!-- Talk button with pulse ring behind it -->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/vPulseRing"
+                    android:layout_width="@dimen/pulse_ring_size"
+                    android:layout_height="@dimen/pulse_ring_size"
+                    android:layout_gravity="center"
+                    android:background="@drawable/pulse_ring_bg"
+                    android:visibility="invisible"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnTalk"
+                    android:layout_width="@dimen/talk_btn_size"
+                    android:layout_height="@dimen/talk_btn_size"
+                    android:layout_gravity="center"
+                    android:text="@string/btn_talk"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/brand_blue"
+                    app:cornerRadius="100dp"
+                    app:elevation="8dp"
+                    android:contentDescription="@string/btn_talk"/>
+            </FrameLayout>
+
+            <!-- Status -->
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/status_idle"
+                android:textColor="@color/text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/tap_hint"
+                android:textColor="@color/text_secondary"
+                android:textSize="15sp"
+                android:gravity="center"/>
+
+            <!-- Wake word card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="@dimen/card_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:cardBackgroundColor="@color/bg_card">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/wake_toggle_label"
+                            android:textColor="@color/text_primary"
+                            android:textSize="17sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/wake_hint"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="14sp"
+                            android:layout_marginTop="3dp"/>
+                    </LinearLayout>
+
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:id="@+id/switchWake"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Feature shortcut chips -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="5dp"
+                    android:text="@string/chip_shield"
+                    android:textColor="@color/chip_shield"
+                    android:textSize="13sp"
+                    app:chipBackgroundColor="@color/chip_shield_bg"
+                    app:chipStrokeColor="@color/chip_shield"
+                    app:chipStrokeWidth="1dp"
+                    app:chipMinTouchTargetSize="0dp"/>
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:text="@string/chip_emergency"
+                    android:textColor="@color/chip_emergency"
+                    android:textSize="13sp"
+                    app:chipBackgroundColor="@color/chip_emergency_bg"
+                    app:chipStrokeColor="@color/chip_emergency"
+                    app:chipStrokeWidth="1dp"
+                    app:chipMinTouchTargetSize="0dp"/>
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/chip_whatsapp"
+                    android:textColor="@color/chip_whatsapp"
+                    android:textSize="13sp"
+                    app:chipBackgroundColor="@color/chip_whatsapp_bg"
+                    app:chipStrokeColor="@color/chip_whatsapp"
+                    app:chipStrokeWidth="1dp"
+                    app:chipMinTouchTargetSize="0dp"/>
+            </LinearLayout>
+
+            <!-- Activity log card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="@dimen/card_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:cardBackgroundColor="@color/bg_card">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/log_header"
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="10dp"/>
+
+                    <TextView
+                        android:id="@+id/tvLog"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:background="@color/log_bg"
+                        android:padding="10dp"
+                        android:textColor="@color/log_text"
+                        android:textSize="13sp"
+                        android:fontFamily="monospace"
+                        android:scrollbars="vertical"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

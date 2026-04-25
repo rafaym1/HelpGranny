@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="brand_blue">#1565C0</color>
+    <color name="brand_blue_light">#42A5F5</color>
+    <color name="brand_blue_dark">#0D47A1</color>
+
+    <color name="bg">#F0F4FF</color>
+    <color name="bg_card">#FFFFFF</color>
+
+    <color name="text_primary">#0D1B2A</color>
+    <color name="text_secondary">#546E7A</color>
+    <color name="text_on_brand">#FFFFFF</color>
+    <color name="text_hint">#90A4AE</color>
+
+    <color name="log_bg">#E8EFF9</color>
+    <color name="log_text">#37474F</color>
+
+    <color name="verdict_scam_bg">#B71C1C</color>
+    <color name="verdict_safe_bg">#1B5E20</color>
+    <color name="verdict_unsure_bg">#E65100</color>
+    <color name="verdict_text">#FFFFFF</color>
+
+    <color name="pulse_ring">#404FC3F7</color>
+
+    <color name="chip_shield">#1565C0</color>
+    <color name="chip_emergency">#C62828</color>
+    <color name="chip_whatsapp">#2E7D32</color>
+    <color name="chip_shield_bg">#DBEAFE</color>
+    <color name="chip_emergency_bg">#FEECEC</color>
+    <color name="chip_whatsapp_bg">#DCFCE7</color>
+
+    <color name="divider">#DBEAFE</color>
+</resources>

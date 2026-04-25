@@ -1,0 +1,91 @@
+name: Deployment 🚀
+
+on:
+  push:
+    tags: [ "v*" ]
+
+jobs:
+  verify-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone the repository
+        uses: actions/checkout@v5
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      
+      - name: Get package version
+        run: |
+          PACKAGE_VERSION="$(uv run python -c 'import tomllib; print(tomllib.load(open("pyproject.toml","rb"))["project"]["version"])')"
+          echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_ENV
+
+      - name: Check tag version
+        uses: minitap-ai/devops-common/.github/actions/check-tag-version@v1
+        with:
+          expected-tag-version: ${{ env.PACKAGE_VERSION }}
+  
+  dockerhub:
+    runs-on: ubuntu-latest
+    needs: verify-tag
+    permissions:
+      contents: read
+    environment:
+      name: DockerHub
+      url: https://hub.docker.com/r/minitap/mobile-use
+    steps:
+      - name: Clone the repository
+        uses: actions/checkout@v5
+
+      - uses: minitap-ai/devops-common/.github/actions/dockerhub-build-push@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          image-name: minitap/${{ vars.IMAGE_NAME }}
+          dockerfile: ${{ github.workspace }}/Dockerfile
+
+  docker-gcp:
+    runs-on: ubuntu-latest
+    needs: verify-tag
+    permissions:
+      contents: read
+    environment: GCP
+    steps:
+      - name: Clone the repository
+        uses: actions/checkout@v5
+
+      - uses: minitap-ai/devops-common/.github/actions/gcp-docker-build-push@v1
+        with:
+          gcp-credentials: ${{ secrets.GCP_SA_KEY }}
+          gcp-project-id: ${{ vars.GCP_PROJECT_ID }}
+          gcp-region: ${{ vars.GCP_REGION }}
+          gcp-artifact-repo: ${{ vars.GCP_ARTIFACT_REPO }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          image-name: ${{ vars.IMAGE_NAME }}-slim
+          dockerfile: ${{ github.workspace }}/slim.Dockerfile
+  
+  pypi:
+    runs-on: ubuntu-latest
+    needs: verify-tag
+    permissions:
+      contents: read
+      id-token: write
+    environment:
+      name: PyPI
+      url: https://pypi.org/project/minitap-mobile-use/
+    steps:
+      - name: Clone the repository
+        uses: actions/checkout@v5
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Build package
+        run: uv build
+
+      - name: Publish package
+        run: uv publish
